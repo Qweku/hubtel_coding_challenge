@@ -13,6 +13,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+    // Sizer here is used to control sizes according to the 
+    // device screen height and width
     return Sizer(builder: (context, deviceType, orientation) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,

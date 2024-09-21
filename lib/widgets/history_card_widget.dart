@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class HistoryCardWidget extends StatelessWidget {
-  final String time, name, phone, amount, image,category,comment;
+  final String time, name, phone, amount, image, category, comment;
   final bool status;
   const HistoryCardWidget({
     super.key,
@@ -12,7 +12,9 @@ class HistoryCardWidget extends StatelessWidget {
     required this.phone,
     required this.amount,
     required this.image,
-    required this.status, required this.category, required this.comment,
+    required this.status,
+    required this.category,
+    required this.comment,
   });
 
   final ThemeData theme;
@@ -34,8 +36,8 @@ class HistoryCardWidget extends StatelessWidget {
             style: theme.textTheme.bodyMedium!
                 .copyWith(color: theme.colorScheme.tertiary),
           ),
-         
-         // Transaction Details
+
+          // Transaction Details
           ListTile(
             contentPadding: EdgeInsets.zero,
             leading: CircleAvatar(
@@ -58,6 +60,8 @@ class HistoryCardWidget extends StatelessWidget {
                       padding: EdgeInsets.all(1.w),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
+
+                          // change the background color according to the status
                           color: status
                               ? Colors.green.shade100
                               : Colors.red.shade100),
@@ -65,6 +69,8 @@ class HistoryCardWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(status ? Icons.check_circle : Icons.cancel,
+
+                              // change the color of the icon according to the status
                               color: status
                                   ? Colors.green.shade800
                                   : Colors.red.shade800,
@@ -73,7 +79,7 @@ class HistoryCardWidget extends StatelessWidget {
                             width: 1.w,
                           ),
                           Text(
-                            status?"Successful":"Failed",
+                            status ? "Successful" : "Failed",
                             style: TextStyle(
                                 fontSize: 1.2.h,
                                 color: status
@@ -107,18 +113,28 @@ class HistoryCardWidget extends StatelessWidget {
             ),
             title: Row(
               children: [
-                Text(category,style: theme.textTheme.bodySmall,),
-               Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: 2.w),
-                  child: Icon(Icons.circle,color:theme.colorScheme.tertiary,size: 1.h,),
+                Text(
+                  category,
+                  style: theme.textTheme.bodySmall,
                 ),
-                Text(comment,style: theme.textTheme.bodySmall,),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 2.w),
+                  child: Icon(
+                    Icons.circle,
+                    color: theme.colorScheme.tertiary,
+                    size: 1.h,
+                  ),
+                ),
+                Text(
+                  comment,
+                  style: theme.textTheme.bodySmall,
+                ),
               ],
             ),
-            trailing: status?Icon(Icons.star,size:5.h,color:Colors.amber):Text(""),
-
+            trailing: status
+                ? Icon(Icons.star, size: 5.h, color: Colors.amber)
+                : Text(""),
           )
-        
         ],
       ),
     );
