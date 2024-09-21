@@ -1,16 +1,30 @@
-# hubtel_coding_challenge
+# Hubtel Coding Challenge - Flutter App
 
-A new Flutter project.
+Welcome, this project was built with Flutter! 
 
-## Getting Started
+## Overview
+This a one screen coding challenge by hubtel in other to evaluate my coding skills in flutter
 
-This project is a starting point for a Flutter application.
+## Requirements
+- Flutter SDK
+- Dart SDK
+- Other dependencies mentioned in `pubspec.yaml`
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Links
+- [GitHub Repository](https://github.com/Qweku/hubtel_coding_challenge)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Screenshots
+
+| Sample Page |  
+|------|
+| ![Sample Page](assets/images/screenshot.png) | 
+
+
+## Major Packages
+- `sizer: ^x.x.x`
+- Other packages as listed in `pubspec.yaml`
+
+## Author
+- [Collins Brobbey Jnr](https://github.com/Qweku)
