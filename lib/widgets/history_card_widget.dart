@@ -62,6 +62,7 @@ class HistoryCardWidget extends StatelessWidget {
                               ? Colors.green.shade100
                               : Colors.red.shade100),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(status ? Icons.check_circle : Icons.cancel,
                               color: status
@@ -72,7 +73,7 @@ class HistoryCardWidget extends StatelessWidget {
                             width: 1.w,
                           ),
                           Text(
-                            "Successful",
+                            status?"Successful":"Failed",
                             style: TextStyle(
                                 fontSize: 1.2.h,
                                 color: status
@@ -107,9 +108,9 @@ class HistoryCardWidget extends StatelessWidget {
             title: Row(
               children: [
                 Text(category,style: theme.textTheme.bodySmall,),
-                Padding(
+               Padding(
                   padding:  EdgeInsets.symmetric(horizontal: 2.w),
-                  child: Icon(Icons.circle,color:theme.colorScheme.tertiary,size: 1.3.h,),
+                  child: Icon(Icons.circle,color:theme.colorScheme.tertiary,size: 1.h,),
                 ),
                 Text(comment,style: theme.textTheme.bodySmall,),
               ],
