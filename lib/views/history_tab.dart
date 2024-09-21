@@ -17,6 +17,8 @@ class HistoryTab extends StatelessWidget {
         children: [
           Row(
             children: [
+
+              // The Search textfield
               Expanded(
                 child: MyTextField(
                   hintText: 'Search',
@@ -30,6 +32,8 @@ class HistoryTab extends StatelessWidget {
               SizedBox(
                 width: 3.w,
               ),
+
+              //Filter Icon
               Image.asset('assets/images/filter.png', height: 5.h),
             ],
           ),
@@ -41,7 +45,11 @@ class HistoryTab extends StatelessWidget {
               padding: EdgeInsets.only(top: 2.h),
               physics: const BouncingScrollPhysics(),
               children: List.generate(historyData.length, (index) {
-                List historyList = historyData[index];
+
+                // A list of the various transactions for each day
+                List historyList = historyData[index]['history'];
+
+                // each day as a header
                 return Padding(
                   padding: EdgeInsets.only(bottom: 3.h),
                   child: Column(
@@ -53,7 +61,7 @@ class HistoryTab extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                             color: theme.colorScheme.primary),
                         child: Text(
-                          "May 24,2022",
+                          historyData[index]['date'],
                           style: theme.textTheme.bodySmall!.copyWith(
                               fontWeight: FontWeight.bold,
                               color: theme.colorScheme.tertiary),
@@ -62,10 +70,12 @@ class HistoryTab extends StatelessWidget {
                       SizedBox(
                         height: 2.h,
                       ),
+
+
+                      // A list of each transaction
                       Column(
                           children: List.generate(historyList.length, (index) {
-                        return 
-                        // Text("word");
+                        return                      
 
                         HistoryCardWidget(
                           theme: theme,

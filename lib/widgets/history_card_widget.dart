@@ -23,7 +23,7 @@ class HistoryCardWidget extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 2.h),
       padding: EdgeInsets.all(3.w),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(10),
           border: Border.all(color: theme.colorScheme.primary)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,7 +95,7 @@ class HistoryCardWidget extends StatelessWidget {
             ),
           ),
           Divider(
-            color: theme.colorScheme.tertiary,
+            color: theme.colorScheme.primary,
           ),
 
           //Transaction category and comment
