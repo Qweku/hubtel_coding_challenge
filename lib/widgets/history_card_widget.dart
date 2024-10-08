@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 
 class HistoryCardWidget extends StatelessWidget {
@@ -21,6 +23,7 @@ class HistoryCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Container(
       margin: EdgeInsets.only(bottom: 2.h),
       padding: EdgeInsets.all(3.w),
@@ -40,65 +43,59 @@ class HistoryCardWidget extends StatelessWidget {
           // Transaction Details
           ListTile(
             contentPadding: EdgeInsets.zero,
-            leading: CircleAvatar(
-              radius: 3.h,
-              backgroundColor: theme.colorScheme.tertiary,
-              backgroundImage: AssetImage(image),
-            ),
-            title: Text(name),
-            subtitle: Text(
-              phone,
-              style: theme.textTheme.bodySmall!
-                  .copyWith(color: theme.colorScheme.tertiary),
-            ),
-            trailing: SizedBox(
-              width: 20.w,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Container(
-                      padding: EdgeInsets.all(1.w),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+            leading: Image.asset(image),
+            
+            title: Row(
 
-                          // change the background color according to the status
-                          color: status
-                              ? Colors.green.shade100
-                              : Colors.red.shade100),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(status ? Icons.check_circle : Icons.cancel,
-
+              children: [
+                Expanded(child: Text(name)),
+                Chip(
+                    labelPadding: EdgeInsets.only(left: 1.w,right: 1.w),
+                    elevation: 0,
+                    side:BorderSide.none,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.h)),
+                    avatar:  Icon(status ? Icons.check_circle : Icons.cancel,
+                              
                               // change the color of the icon according to the status
                               color: status
-                                  ? Colors.green.shade800
-                                  : Colors.red.shade800,
+                                  ? const Color.fromARGB(225,112, 224, 131)
+                                  : const Color.fromARGB(225,153, 35, 29),
                               size: 2.h),
-                          SizedBox(
-                            width: 1.w,
-                          ),
-                          Text(
+                    backgroundColor: status
+                              ? const Color.fromARGB(225, 219, 247, 224)
+                              : const Color.fromARGB(225,253, 176, 172),
+                   
+                    label:  Text(
                             status ? "Successful" : "Failed",
                             style: TextStyle(
-                                fontSize: 1.2.h,
+                                fontSize: 1.4.h,
+                                fontFamily: "NunitoSans-ExtraBold",
                                 color: status
-                                    ? Colors.green.shade800
-                                    : Colors.red.shade800),
-                          )
-                        ],
-                      )),
-                  SizedBox(
-                    height: 1.h,
+                                    ? const Color.fromARGB(225,112, 224, 131)
+                                  : const Color.fromARGB(225,153, 35, 29)),
+                          ),
                   ),
-                  Text(
+             
+
+              ],
+            ),
+            subtitle: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  phone,
+                  style: theme.textTheme.bodySmall!
+                      .copyWith(color: theme.colorScheme.tertiary, fontSize: 14),
+                ),
+                Text(
                     "GHS $amount",
                     style: theme.textTheme.bodyLarge!
-                        .copyWith(fontWeight: FontWeight.bold),
-                  )
-                ],
-              ),
+                        .copyWith(fontFamily: "NunitoSans-ExtraBold"),
+                  ),
+              ],
             ),
+          
+          
           ),
           Divider(
             color: theme.colorScheme.primary,
@@ -107,17 +104,17 @@ class HistoryCardWidget extends StatelessWidget {
           //Transaction category and comment
           ListTile(
             contentPadding: EdgeInsets.zero,
-            leading: CircleAvatar(
-              backgroundColor: Colors.purple.shade200,
-              child: Icon(Icons.person, color: Colors.purple.shade800),
-            ),
+            leading: SvgPicture.asset("assets/images/user_icon.svg",height: 5.h,),
             title: Row(
               children: [
                 Text(
                   category,
-                  style: theme.textTheme.bodySmall,
+                  style: theme.textTheme.bodyMedium,
                 ),
-                Padding(
+                comment.isEmpty?Padding(
+                  padding:  EdgeInsets.only(left:3.w),
+                  child: SvgPicture.asset("assets/images/star.svg",height: 3.h,),
+                ): Padding(
                   padding: EdgeInsets.symmetric(horizontal: 2.w),
                   child: Icon(
                     Icons.circle,
@@ -127,13 +124,13 @@ class HistoryCardWidget extends StatelessWidget {
                 ),
                 Text(
                   comment,
-                  style: theme.textTheme.bodySmall,
+                  style: theme.textTheme.bodyMedium,
                 ),
               ],
             ),
-            trailing: status
-                ? Icon(Icons.star, size: 5.h, color: Colors.amber)
-                : Text(""),
+            trailing: status && comment.isNotEmpty
+                ? SvgPicture.asset("assets/images/star.svg",height: 3.h,)
+                : const SizedBox(),
           )
         ],
       ),

@@ -22,7 +22,7 @@ class _CustomPainter extends BoxPainter {
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
     assert(configuration.size != null);
-    double indicatorHeight = 5.h;
+    double indicatorHeight = 6.h;
 
     //offset is the position from where the decoration should be drawn.
     //configuration.size tells us about the height and width of the tab.

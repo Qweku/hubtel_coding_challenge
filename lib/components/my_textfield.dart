@@ -28,6 +28,7 @@ class MyTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
+    var theme=Theme.of(context);
     return TextFormField(
       readOnly: readOnly,
       textAlignVertical: TextAlignVertical.top,
@@ -47,7 +48,8 @@ class MyTextField extends StatelessWidget {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          hintText: hintText),
+          hintText: hintText,
+          hintStyle: TextStyle(color: theme.colorScheme.tertiary)),
     );
   }
 }

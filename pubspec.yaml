@@ -36,6 +36,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   sizer: ^2.0.15
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -77,9 +78,14 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Lato
+    - family: NunitoSans-Regular
       fonts:
-        - asset: assets/fonts/Lato-Regular.ttf
+        - asset: assets/fonts/NunitoSans_Regular.ttf
+
+    - family: NunitoSans-ExtraBold
+      fonts:
+        - asset: assets/fonts/NunitoSans_ExtraBold.ttf
+          weight: 800
           
   #   - family: Trajan Pro
   #     fonts:

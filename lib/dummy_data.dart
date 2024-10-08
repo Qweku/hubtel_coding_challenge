@@ -6,7 +6,7 @@ List<Map<String, dynamic>> historyData = [
     "history": [
       {
         "id": 1,
-        "image": "assets/images/momo.jpeg",
+        "image": "assets/images/momo2x.png",
         "time": "14:45PM",
         "name": "Emmanuel Rockson Kwamena Uncle Ebo",
         "phone": "024 123 4567",
@@ -17,7 +17,7 @@ List<Map<String, dynamic>> historyData = [
       },
       {
         "id": 2,
-        "image": "assets/images/absa.jpeg",
+        "image": "assets/images/absa2x.png",
         "time": "14:45PM",
         "name": "Absa Bank",
         "phone": "024 123 4567",
@@ -34,7 +34,7 @@ List<Map<String, dynamic>> historyData = [
     "history": [
       {
         "id": 1,
-        "image": "assets/images/momo.jpeg",
+        "image": "assets/images/momo2x.png",
         "time": "14:45PM",
         "name": "Emmanuel Rockson",
         "phone": "024 123 4567",
@@ -45,7 +45,7 @@ List<Map<String, dynamic>> historyData = [
       },
       {
         "id": 2,
-        "image": "assets/images/momo.jpeg",
+        "image": "assets/images/momo2x.png",
         "time": "14:45PM",
         "name": "Emmanuel Rockson",
         "phone": "024 123 4567",

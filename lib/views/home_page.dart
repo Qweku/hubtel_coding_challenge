@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hubtel_coding_challenge/components/bottom_navbar.dart';
 import 'package:hubtel_coding_challenge/tab_indicator.dart';
 import 'package:hubtel_coding_challenge/views/history_tab.dart';
 import 'package:sizer/sizer.dart';
@@ -24,14 +25,14 @@ class _MyHomePageState extends State<MyHomePage> {
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(3.h),
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 1.w),
+              padding: EdgeInsets.symmetric(horizontal: .5.w),
               margin: EdgeInsets.symmetric(horizontal: 3.w),
               decoration: BoxDecoration(
                   color: theme.colorScheme.primary,
                   borderRadius: BorderRadius.circular(5)),
               child: TabBar(
                 unselectedLabelStyle: theme.textTheme.labelLarge!
-                    .copyWith(color: Colors.grey.shade500),
+                    .copyWith(color: theme.colorScheme.tertiary),
                 labelStyle: theme.textTheme.labelLarge!
                     .copyWith(fontWeight: FontWeight.bold),
                 dividerHeight: 0,
@@ -67,46 +68,30 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton.extended(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
           onPressed: () async {},
           extendedPadding:
-              EdgeInsets.symmetric(vertical: .15.h, horizontal: 3.w),
+              EdgeInsets.symmetric( horizontal: 3.w),
           backgroundColor: const Color.fromARGB(255, 0, 200, 170),
           label: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Icon(
+               Icon(
                 Icons.add_circle,
                 color: Colors.white,
+                size: 5.5.h,
               ),
               SizedBox(
                 width: 1.w,
               ),
               const Text(
                 'SEND NEW',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white,fontFamily: "NunitoSans-ExtraBold", fontSize: 14),
               ),
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          unselectedLabelStyle: const TextStyle(color: Colors.grey),
-          items: const [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home_filled, color: Colors.black),
-                label: "Home"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.mobile_screen_share, color: Colors.black),
-                label: "Send"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.list_alt, color: Colors.black),
-                label: "History"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_month_rounded, color: Colors.black),
-                label: "Schedule")
-          ],
-        ),
+        bottomNavigationBar: const BottomNavbar()
       ),
     );
   }

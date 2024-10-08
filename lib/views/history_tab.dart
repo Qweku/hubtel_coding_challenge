@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hubtel_coding_challenge/components/my_textfield.dart';
 import 'package:hubtel_coding_challenge/dummy_data.dart';
+import 'package:hubtel_coding_challenge/model/history_model.dart';
 import 'package:hubtel_coding_challenge/widgets/history_card_widget.dart';
 import 'package:sizer/sizer.dart';
 
@@ -13,10 +15,12 @@ class HistoryTab extends StatefulWidget {
 
 class _HistoryTabState extends State<HistoryTab> {
   bool isLoading = true;
+  List<HistoryData> historyList =
+      historyData.map((data) => HistoryData.fromMap(data)).toList();
 
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 3), () {
       setState(() {
         isLoading = false;
       });
@@ -28,7 +32,7 @@ class _HistoryTabState extends State<HistoryTab> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Padding(
-      padding: EdgeInsets.all(3.w),
+      padding: EdgeInsets.symmetric(horizontal:3.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -50,7 +54,7 @@ class _HistoryTabState extends State<HistoryTab> {
               ),
 
               //Filter Icon
-              Image.asset('assets/images/filter.png', height: 5.h),
+              SvgPicture.asset('assets/images/filter.svg', height: 6.h),
             ],
           ),
           SizedBox(
@@ -60,33 +64,35 @@ class _HistoryTabState extends State<HistoryTab> {
           // History list
           Expanded(
             child: isLoading
-                    ? Center(
-                        child: CircularProgressIndicator(
-                          color: theme.colorScheme.inversePrimary,
-                        ),
-                      )
-                    : ListView(
-              padding: EdgeInsets.only(top: 2.h),
-              physics: const BouncingScrollPhysics(),
-              children: List.generate(historyData.length, (index) {
-                // A list of the various transactions for each day
-                List historyList = historyData[index]['history'];
+                ? Center(
+                    child: CircularProgressIndicator(
+                      color: theme.colorScheme.inversePrimary,
+                    ),
+                  )
+                : ListView(
+                    padding: EdgeInsets.only(top: 2.h),
+                    physics: const BouncingScrollPhysics(),
+                    children: List.generate(historyList.length, (index) {
+                      // A list of the various transactions for each day
+                      List<Transaction> transactionList = historyList[index].history;
 
-                // each day as a header
-                return Padding(
+                      // each day as a header
+                      return Padding(
                         padding: EdgeInsets.only(bottom: 3.h),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              padding: EdgeInsets.all(3.w),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 3.w, vertical: 1.h),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: theme.colorScheme.primary),
                               child: Text(
-                                historyData[index]['date'],
+                                historyList[index].date,
                                 style: theme.textTheme.bodySmall!.copyWith(
                                     fontWeight: FontWeight.bold,
+                                    fontFamily: "NunitoSans-ExtraBold",
                                     color: theme.colorScheme.tertiary),
                               ),
                             ),
@@ -97,24 +103,24 @@ class _HistoryTabState extends State<HistoryTab> {
                             // A list of each transaction
                             Column(
                                 children:
-                                    List.generate(historyList.length, (index) {
+                                    List.generate(transactionList.length, (index) {
                               return HistoryCardWidget(
                                 theme: theme,
-                                image: historyList[index]['image'],
-                                name: historyList[index]['name'],
-                                time: historyList[index]['time'],
-                                phone: historyList[index]['phone'],
-                                status: historyList[index]['status'],
-                                amount: historyList[index]['amount'],
-                                category: historyList[index]['category'],
-                                comment: historyList[index]['comment'],
+                                image: transactionList[index].image,
+                                name: transactionList[index].name,
+                                time: transactionList[index].time,
+                                phone: transactionList[index].phone,
+                                status: transactionList[index].status,
+                                amount: transactionList[index].amount,
+                                category: transactionList[index].category,
+                                comment: transactionList[index].comment,
                               );
                             }))
                           ],
                         ),
                       );
-              }),
-            ),
+                    }),
+                  ),
           )
         ],
       ),
