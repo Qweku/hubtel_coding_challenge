@@ -24,6 +24,7 @@ This a one screen coding challenge by hubtel in other to evaluate my coding skil
 
 ## Major Packages
 - `sizer: ^x.x.x`
+- `flutter_svg: ^x.x.x`
 - Other packages as listed in `pubspec.yaml`
 
 ## Author

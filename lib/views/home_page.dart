@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 unselectedLabelStyle: theme.textTheme.labelLarge!
                     .copyWith(color: theme.colorScheme.tertiary),
                 labelStyle: theme.textTheme.labelLarge!
-                    .copyWith(fontWeight: FontWeight.bold),
+                    .copyWith(fontFamily: "NunitoSans-ExtraBold"),
                 dividerHeight: 0,
                 labelColor: Colors.black,
                 indicator: CustomTabIndicator(),
@@ -53,14 +53,12 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 5.h,
               color: theme.colorScheme.primary,
             ),
-            Expanded(
+            const Expanded(
               child: TabBarView(
                 children: [
                   // History Tab
-                  const HistoryTab(),
-                  Container(
-                    child: const Center(child: Text("No Transaction Summary")),
-                  )
+                  HistoryTab(),
+                  Center(child: Text("No Transaction Summary"))
                 ],
               ),
             ),

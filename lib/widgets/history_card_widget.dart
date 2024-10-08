@@ -84,8 +84,8 @@ class HistoryCardWidget extends StatelessWidget {
               children: [
                 Text(
                   phone,
-                  style: theme.textTheme.bodySmall!
-                      .copyWith(color: theme.colorScheme.tertiary, fontSize: 14),
+                  style: theme.textTheme.bodyMedium!
+                      .copyWith(color: theme.colorScheme.tertiary, fontSize: 16),
                 ),
                 Text(
                     "GHS $amount",
